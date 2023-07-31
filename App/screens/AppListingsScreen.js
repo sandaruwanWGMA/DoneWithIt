@@ -1,15 +1,10 @@
-import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from "react-native";
-import React from "react";
+import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
 import Constants from "expo-constants";
+
 import ListItem from "../components/ListItem";
 import Colors from "../config/colors";
+import RenderDeleteAction from "../components/RenderDeleteAction";
 
 const DATA = [
   {
@@ -32,35 +27,55 @@ const DATA = [
   },
 ];
 
-function renderItem(props) {
-  return (
-    <ListItem
-      data={props.item.data}
-      image={props.item.image}
-      text={props.item.text}
-    />
-  );
-}
 export default function AppListingsDetailsScreen() {
+  const [messages, setMessages] = useState(DATA);
+  const [Refreshing, doRefreshing] = useState(false);
+
+  function handleDelete(message) {
+    setMessages(messages.filter((m) => m.id !== message.id));
+    console.log(messages);
+  }
+
+  function renderItem({ item }) {
+    return (
+      <ListItem
+        data={item.data}
+        image={item.image}
+        text={item.text}
+        renderRightAction={() => (
+          <RenderDeleteAction onPress={() => handleDelete(item)} />
+        )}
+      />
+    );
+  }
+
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <FlatList
-        data={DATA}
+        data={messages}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        ItemSeparatorComponent={() => (<View style={{
-          backgroundColor: Colors.medium,
-          width: "100%",
-          height: 1
-        }} />)}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              backgroundColor: Colors.medium,
+              width: "100%",
+              height: 1,
+            }}
+          />
+        )}
+        refreshing={Refreshing}
+        onRefresh={() => {
+          setMessages(DATA);
+        }}
       ></FlatList>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: Colors.light,
+    flex: 1,
     paddingTop: Constants.statusBarHeight,
   },
 });
