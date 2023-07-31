@@ -12,16 +12,17 @@ import {
 } from "react-native-gesture-handler";
 import colors from "../config/colors";
 
-export default function ListItem({ image, text, data, renderRightAction }) {
+export default function ListItem({ image, title, subTilte, renderRightAction, icon }) {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightAction}>
-        <TouchableHighlight onPress={()=>console.log("done")}>
+        <TouchableHighlight onPress={() => console.log("done")}>
           <View style={styles.listItem}>
+            {icon}
             <Image source={image} style={styles.listImg} />
             <View>
-              <Text style={styles.details}>{text}</Text>
-              <Text style={styles.details}>{data}</Text>
+              <Text style={styles.details}>{title}</Text>
+              <Text style={styles.details}>{subTilte}</Text>
             </View>
           </View>
         </TouchableHighlight>
@@ -35,13 +36,13 @@ const styles = StyleSheet.create({
     padding: 15,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: colors.light
+    backgroundColor: colors.light,
   },
   listImg: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10
+    marginRight: 10,
   },
   details: {},
 });

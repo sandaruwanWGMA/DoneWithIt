@@ -27,7 +27,7 @@ const DATA = [
   },
 ];
 
-export default function AppListingsDetailsScreen() {
+export default function MessagesScreen() {
   const [messages, setMessages] = useState(DATA);
   const [Refreshing, doRefreshing] = useState(false);
 
@@ -39,9 +39,9 @@ export default function AppListingsDetailsScreen() {
   function renderItem({ item }) {
     return (
       <ListItem
-        data={item.data}
+        subTilte={item.data}
         image={item.image}
-        text={item.text}
+        title={item.text}
         renderRightAction={() => (
           <RenderDeleteAction onPress={() => handleDelete(item)} />
         )}
@@ -64,7 +64,7 @@ export default function AppListingsDetailsScreen() {
             }}
           />
         )}
-        refreshing={Refreshing}
+        refreshing={false}
         onRefresh={() => {
           setMessages(DATA);
         }}

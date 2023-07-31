@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, View } from "react-native";
+import  Constants  from 'expo-constants';
 
-const Screen = () => {
+const Screen = ({children, style}) => {
     return (
-        <View>
-
+        <View style={[style, {marginTop: Constants.statusBarHeight}]}>
+            {children}
         </View>
     );
 };
