@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import { StyleSheet, View } from "react-native";
-import  Constants  from 'expo-constants';
+import Constants from "expo-constants";
 
-const Screen = ({children, style}) => {
-    return (
-        <View style={[style, {marginTop: Constants.statusBarHeight}]}>
-            {children}
-        </View>
-    );
+const Screen = ({ children, style }) => {
+  return <View style={[styles.screen, style]}>{children}</View>;
 };
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+  },
+});
+
 export default Screen;

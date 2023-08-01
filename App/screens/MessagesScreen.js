@@ -58,7 +58,7 @@ export default function MessagesScreen() {
         ItemSeparatorComponent={() => (
           <View
             style={{
-              backgroundColor: Colors.medium,
+              backgroundColor: "#d9d9d9",
               width: "100%",
               height: 1,
             }}

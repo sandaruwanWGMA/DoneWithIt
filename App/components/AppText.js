@@ -1,16 +1,12 @@
-import { Platform, SafeAreaView, StyleSheet, Text } from "react-native";
-import React from "react";
+import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-export default function AppText(props) {
-  return <Text style={styles.text}>{props.title}</Text>;
+export default function AppText({children, style}) {
+  return <Text style={[styles.text, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
   text: {
-    color: "white",
-    fontWeight: "700",
-    textAlign: "center",
-    fontSize: 25,
+    color: "black",
     ...Platform.select({
       android: {
         fontFamily: "Roboto",
