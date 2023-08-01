@@ -19,14 +19,15 @@ export default function ListItem({
   subTilte,
   renderRightAction,
   icon,
+  onPress
 }) {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightAction}>
-        <TouchableHighlight onPress={() => console.log("done")}>
+        <TouchableHighlight onPress={onPress}>
           <View style={styles.listItem}>
             {icon}
-            <Image source={image} style={styles.listImg} />
+            {image && <Image source={image} style={styles.listImg} />}
             <View>
               <Text style={styles.title}>{title}</Text>
               {subTilte && 

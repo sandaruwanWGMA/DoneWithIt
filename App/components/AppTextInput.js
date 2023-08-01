@@ -7,13 +7,14 @@ import colors from "../config/colors";
 
 export default function AppTextInput({
   iconName,
+  radious = 25,
   size = 20,
-  placeholder,
-  keyboardType,
-  onChangeText,
+  ...otherProps
 }) {
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { borderRadius: radious, marginVertical: 20 }]}
+    >
       {iconName && (
         <MaterialCommunityIcons
           name={iconName}
@@ -23,11 +24,8 @@ export default function AppTextInput({
       )}
       <TextInput
         style={[styles.textInput, { fontSize: size }]}
-        keyboardType={keyboardType}
-        onChangeText={onChangeText}
-      >
-        {placeholder}
-      </TextInput>
+        {...otherProps}
+      ></TextInput>
     </View>
   );
 }
@@ -41,6 +39,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textInput: {
+    width: "100%",
     marginLeft: 10,
     color: colors.medium,
   },
