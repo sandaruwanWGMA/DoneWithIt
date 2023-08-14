@@ -7,6 +7,7 @@ import AppTextInput from "./App/components/AppTextInput";
 import AppText from "./App/components/AppText";
 import Screen from "./App/components/Screen";
 import AppPicker from "./App/components/AppPicker";
+import LoginScreen from "./App/screens/LoginScreen";
 
 export default function App() {
   const items = [
@@ -27,11 +28,10 @@ export default function App() {
     //   ></AppTextInput>
     // </Screen>
 
-    <Screen>
-      <AppPicker iconName="apps" items={items}></AppPicker>
-      <AppTextInput iconName="gmail" placeholder="email"></AppTextInput>
-    </Screen>
+    // <Screen>
+    //   <AppPicker iconName="apps" items={items}></AppPicker>
+    //   <AppTextInput iconName="gmail" placeholder="email"></AppTextInput>
+    // </Screen>
+    <LoginScreen></LoginScreen>
   );
 }
-
-
